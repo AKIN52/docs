@@ -16,11 +16,17 @@ topics:
 
 Effective date: **April 2, 2021**
 
+{% note %}
+
+**Note:** Changes to the list of cookies on this page are currently pending.
+
+{% endnote %}
+
 GitHub provides a great deal of transparency regarding how we use your data, how we collect your data, and with whom we share your data. To that end, we provide this page, which details [our subprocessors](#github-subprocessors), and how we use [cookies](#cookies-on-github).
 
 ## GitHub Subprocessors
 
-When we share your information with third party subprocessors, such as our vendors and service providers, we remain responsible for it. We work very hard to maintain your trust when we bring on new vendors, and we require all vendors to enter into data protection agreements with us that restrict their processing of Users' Personal Information (as defined in the [Privacy Statement](/articles/github-privacy-statement/)).
+When we share your information with third party subprocessors, such as our vendors and service providers, we remain responsible for it. We work very hard to maintain your trust when we bring on new vendors, and we require all vendors to enter into data protection agreements with us that restrict their processing of Users' Personal Information (as defined in the [Privacy Statement](/articles/github-privacy-statement/)). You can sign up to receive subprocessor list updates [here](https://www.github.com/privacy/subprocessors).
 
 | Name of Subprocessor | Description of Processing | Location of Processing | Corporate Location
 |:---|:---|:---|:---|

@@ -9,7 +9,7 @@ redirect_from:
   - /packages/guides/deleting-a-container-image
 versions:
   fpt: '*'
-  ghes: '>=3.2'
+  ghes: '*'
   ghec: '*'
   ghae: '*'
 shortTitle: 删除和恢复包
@@ -102,9 +102,9 @@ curl -X POST \
 HOSTNAME/graphql
 ```
 
-要查找已发布到 {% data variables.product.prodname_registry %} 的所有私有包以及包的版本 ID，您可以使用 `registryPackagesForQuery` 通过 `repository` 对象连接。 您需要具有 `read:packages` 和 `repo` 作用域的令牌。 更多信息请参阅 [`packages`]({% ifversion ghec %}/free-pro-team@latest{% endif %}/graphql/reference/objects#repository) 连接或 [`PackageOwner`]({% ifversion ghec %}/free-pro-team@latest{% endif %}/graphql/reference/interfaces#packageowner) 接口。
+要查找已发布到 {% data variables.product.prodname_registry %} 的所有私有包以及包的版本 ID，您可以使用 `registryPackagesForQuery` 通过 `repository` 对象连接。 您需要具有 `read:packages` 和 `repo` 作用域的令牌。 更多信息请参阅 [`packages`](/graphql/reference/objects#repository) 连接或 [`PackageOwner`](/graphql/reference/interfaces#packageowner) 界面。
 
-有关 `deletePackageVersion` 突变的更多信息，请参阅“[`deletePackageVersion`]({% ifversion ghec %}/free-pro-team@latest{% endif %}/graphql/reference/mutations#deletepackageversion)”。
+有关 `deletePackageVersion` 突变的更多信息，请参阅“[`deletePackageVersion`](/graphql/reference/mutations#deletepackageversion)”。
 
 您不能直接使用 GraphQL 删除整个包，但如果您删除包的每个版本，该包将不再显示在 {% data variables.product.product_name %} 上。
 
@@ -181,7 +181,7 @@ HOSTNAME/graphql
 {% ifversion fpt or ghec %}
 要恢复已删除的包，您还必须满足以下权限要求之一：
   - 对于仓库范围的包：您必须对拥有删除的包的仓库具有管理员权限。{% ifversion fpt or ghec %}
-  - 对于用户帐户范围的包：您的用户帐户拥有已删除的包。
+  - 对于用户帐户范围的包：您的个人帐户拥有已删除的包。
   - 对于组织范围的包：您对拥有包的组织中删除的包具有管理员权限。{% endif %}
 {% endif %}
 
@@ -209,7 +209,7 @@ HOSTNAME/graphql
 
 ### 恢复用户帐户范围的包
 
-如果包在您的一个仓库中或范围限于您的用户帐，则您可以通过用户帐户设置恢复已删除的包。 更多信息请参阅“[必需权限](#required-permissions-to-delete-or-restore-a-package)”。
+如果包在您的一个仓库中或范围限于您的个人帐户，则您可以通过个人帐户设置恢复已删除的包。 更多信息请参阅“[必需权限](#required-permissions-to-delete-or-restore-a-package)”。
 
 {% data reusables.user-settings.access_settings %}
 2. 在左侧，单击 **Packages（包）**。

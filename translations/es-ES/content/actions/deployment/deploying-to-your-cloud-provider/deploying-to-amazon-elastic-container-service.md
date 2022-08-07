@@ -26,7 +26,7 @@ Esta guía te explica cómo utilizar las {% data variables.product.prodname_acti
 
 En cada subida nueva a `main` en tu repositorio de {% data variables.product.company_short %}, el flujo de trabajo de las {% data variables.product.prodname_actions %} creará y subirá una imagen de contenedor nueva hacia el ECR de Amazon y luego desplegará una definición de tarea nueva hacia el ECS de Amazon.
 
-{% ifversion fpt or ghec or ghae-issue-4856 %}
+{% ifversion fpt or ghec or ghae-issue-4856 or ghes > 3.4 %}
 
 {% note %}
 
@@ -91,6 +91,8 @@ Asegúrate de que proporcionas tus propios valores para todas las variables en l
 
 ```yaml{:copy}
 {% data reusables.actions.actions-not-certified-by-github-comment %}
+
+{% data reusables.actions.actions-use-sha-pinning-comment %}
 
 name: Deploy to Amazon ECS
 

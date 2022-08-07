@@ -44,7 +44,7 @@ Generalmente, estarás suscrito automática y predeterminadamente a las conversa
 - Has cambiado el estado de un hilo, como cuando cierras un informe de problemas o fusionas una solicitud de extracción.
 - Se ha @mencionado a algún equipo al que pertenezcas.
 
-También está predeterminado que sigas automáticamente a todos los repositorios que has creado y sean propiedad de tu cuenta de usuario.
+Predeterminadamente, también observarás automáticamente a todos los repositorios que crees y que le pertenezcan a tu cuenta personal.
 
 Para darte de baja de las conversaciones a las cuales estás suscrito automáticamente, puedes cambiar tu configuración de notificaciones o darte de baja directamente o dejar de seguir la actividad de {% data variables.product.product_location %}. Para obtener más información, consulta la opción "[Administrar tus suscripciones](/github/managing-subscriptions-and-notifications-on-github/managing-your-subscriptions)".
 
@@ -96,4 +96,4 @@ Las notificaciones que no se marquen como **Guardadas** se mantendrán por 5 mes
 
 ## Retroalimentación y soporte
 
-Si tienes retroalimentación o solicitudes de características para las notificaciones, utiliza un [debate de retroalimentación de {% data variables.product.product_name %}](https://github.com/github/feedback/discussions/categories/general-feedback).
+If you have feedback or feature requests for notifications, use a [{% data variables.product.prodname_github_community %} discussion](https://github.com/orgs/community/discussions/categories/general).

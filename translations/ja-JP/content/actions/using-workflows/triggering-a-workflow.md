@@ -20,14 +20,7 @@ miniTocMaxHeadingLevel: 3
 
 ## About workflow triggers
 
-Workflow triggers are events that cause a workflow to run. These events can be:
-
-- Events that occur in your workflow's repository
-- Events that occur outside of {% data variables.product.product_name %} and trigger a `repository_dispatch` event on {% data variables.product.product_name %}
-- Scheduled times
-- Manual
-
-For example, you can configure your workflow to run when a push is made to the default branch of your repository, when a release is created, or when an issue is opened.
+{% data reusables.actions.about-triggers %}
 
 Workflow triggers are defined with the `on` key. 詳しい情報については、「[{% data variables.product.prodname_actions %} のワークフロー構文](/articles/workflow-syntax-for-github-actions#on)」を参照してください。
 
@@ -43,7 +36,7 @@ Workflow triggers are defined with the `on` key. 詳しい情報については�
 
 {% data reusables.actions.actions-do-not-trigger-workflows %} For more information, see "[Authenticating with the GITHUB_TOKEN](/actions/configuring-and-managing-workflows/authenticating-with-the-github_token)."
 
-If you do want to trigger a workflow from within a workflow run, you can use a personal access token instead of `GITHUB_TOKEN` to trigger events that require a token. 個人アクセストークンを作成し、それをシークレットとして保存する必要があります。 {% data variables.product.prodname_actions %}の利用コストを最小化するために、再帰的あるいは意図しないワークフローの実行が生じないようにしてください。 個人アクセストークンの作成に関する詳しい情報については「[個人アクセストークンの作成](/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)」を参照してください。 For more information about storing a personal access token as a secret, see "[Creating and storing encrypted secrets](/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)."
+If you do want to trigger a workflow from within a workflow run, you can use a personal access token instead of `GITHUB_TOKEN` to trigger events that require a token. 個人アクセストークンを作成し、それをシークレットとして保存する必要があります。 {% data variables.product.prodname_actions %}の利用コストを最小化するために、再帰的あるいは意図しないワークフローの実行が生じないようにしてください。 For more information about creating a personal access token, see "[Creating a personal access token](/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)." For more information about storing a personal access token as a secret, see "[Creating and storing encrypted secrets](/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)."
 
 For example, the following workflow uses a personal access token (stored as a secret called `MY_TOKEN`) to add a label to an issue via {% data variables.product.prodname_cli %}. Any workflows that run when a label is added will run once this step is performed.
 
@@ -87,15 +80,15 @@ jobs:
 
 Use the `on` key to specify what events trigger your workflow. For more information about events you can use, see "[Events that trigger workflows](/actions/using-workflows/events-that-trigger-workflows)."
 
-### Using a single event
+### 単一イベントの利用
 
 {% data reusables.actions.on-single-example %}
 
-### Using multiple events
+### 複数イベントの利用
 
 {% data reusables.actions.on-multiple-example %}
 
-### Using activity types and filters with multiple events
+### 複数のイベントでのアクティビティタイプとフィルタの利用
 
 You can use activity types and filters to further control when your workflow will run. For more information, see [Using event activity types](#using-event-activity-types) and [Using filters](#using-filters). {% data reusables.actions.actions-multiple-types %}
 
@@ -103,7 +96,7 @@ You can use activity types and filters to further control when your workflow wil
 
 {% data reusables.actions.actions-activity-types %}
 
-## Using filters
+## フィルタの利用
 
 {% data reusables.actions.actions-filters %}
 
@@ -191,7 +184,7 @@ For more information about contexts, see "[Contexts](/actions/learn-github-actio
 
 ## Further controlling how your workflow will run
 
-If you want more granular control than events, event activity types, or event filters provide, you can use conditionals{% ifversion fpt or ghae or ghes > 3.1 or ghec %} and environments{% endif %} to control whether individual jobs or steps in your workflow will run.
+If you want more granular control than events, event activity types, or event filters provide, you can use conditionals and environments to control whether individual jobs or steps in your workflow will run.
 
 ### Using conditionals
 
@@ -244,8 +237,6 @@ jobs:
 
 For more information about what information is available in the event context, see "[Using event information](#using-event-information)." For more information about how to use conditionals, see "[Expressions](/actions/learn-github-actions/expressions)."
 
-{% ifversion fpt or ghae or ghes > 3.1 or ghec %}
-
 ### Using environments to manually trigger workflow jobs
 
 If you want to manually trigger a specific job in a workflow, you can use an environment that requires approval from a specific team or user. First, configure an environment with required reviewers. For more information, see "[Using environments for deployment](/actions/deployment/targeting-different-environments/using-environments-for-deployment)." Then, reference the environment name in a job in your workflow using the `environment:` key. Any job referencing the environment will not run until at least one reviewer approves the job.
@@ -279,7 +270,6 @@ jobs:
 {% data reusables.gated-features.environments %}
 
 {% endnote %}
-{% endif %}
 
 ## Available events
 

@@ -2,26 +2,26 @@ import React, { useEffect } from 'react'
 import App from 'next/app'
 import type { AppProps, AppContext } from 'next/app'
 import Head from 'next/head'
-import { ThemeProvider, ThemeProviderProps } from '@primer/react'
-import { SSRProvider } from '@react-aria/ssr'
-import { defaultComponentThemeProps, getThemeProps } from 'components/lib/getThemeProps'
+import { ThemeProvider, SSRProvider, ThemeProviderProps } from '@primer/react'
 
 import '../stylesheets/index.scss'
 
 import events from 'components/lib/events'
 import experiment from 'components/lib/experiment'
-import { LanguagesContext, LanguagesContextT } from 'components/context/LanguagesContext'
+import { useSession } from 'components/hooks/useSession'
 
 type MyAppProps = AppProps & {
-  csrfToken: string
-  themeProps: typeof defaultComponentThemeProps & Pick<ThemeProviderProps, 'colorMode'>
-  languagesContext: LanguagesContextT
+  isDotComAuthenticated: boolean
 }
-const MyApp = ({ Component, pageProps, csrfToken, themeProps, languagesContext }: MyAppProps) => {
+
+type colorModeAuto = Pick<ThemeProviderProps, 'colorMode'>
+
+const MyApp = ({ Component, pageProps }: MyAppProps) => {
+  const { session, isLoadingSession } = useSession()
   useEffect(() => {
-    events()
+    events(session?.csrfToken)
     experiment()
-  }, [])
+  }, [session])
 
   return (
     <>
@@ -47,36 +47,44 @@ const MyApp = ({ Component, pageProps, csrfToken, themeProps, languagesContext }
           name="google-site-verification"
           content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY"
         />
-
-        <meta name="csrf-token" content={csrfToken} />
       </Head>
       <SSRProvider>
         <ThemeProvider
-          colorMode={themeProps.colorMode}
-          dayScheme={themeProps.dayTheme}
-          nightScheme={themeProps.nightTheme}
-          preventSSRMismatch
+          colorMode={
+            (session?.theme?.colorMode as colorModeAuto['colorMode']) ||
+            ('auto' as colorModeAuto['colorMode'])
+          }
+          dayScheme={session?.theme?.dayTheme || 'light'}
+          nightScheme={session?.theme?.nightTheme || 'dark'}
         >
-          <LanguagesContext.Provider value={languagesContext}>
+          {/* Appears Next.js can't modify <body> after server rendering: https://stackoverflow.com/a/54774431 */}
+          <div
+            data-color-mode={session?.themeCss?.colorMode || 'auto'}
+            data-dark-theme={session?.themeCss?.nightTheme || 'dark'}
+            data-light-theme={session?.themeCss?.dayTheme || 'light'}
+            style={
+              /* render a mostly gray background until we know the color mode via XHR */
+              { opacity: isLoadingSession ? 0.1 : 1 }
+            }
+          >
             <Component {...pageProps} />
-          </LanguagesContext.Provider>
+          </div>
         </ThemeProvider>
       </SSRProvider>
     </>
   )
 }
 
+// Remember, function is only called once if the rendered page can
+// be in-memory cached. But still, the `<MyApp>` component will be
+// executed every time **in the client** if it was the first time
+// ever (since restart) or from a cached HTML.
 MyApp.getInitialProps = async (appContext: AppContext) => {
-  const { ctx } = appContext
   // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext)
-  const req: any = ctx.req
 
   return {
     ...appProps,
-    themeProps: getThemeProps(req),
-    csrfToken: req?.csrfToken?.() || '',
-    languagesContext: { languages: req.context.languages },
   }
 }
 

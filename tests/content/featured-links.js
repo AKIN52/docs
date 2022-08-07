@@ -45,9 +45,9 @@ describe('featuredLinks', () => {
 
       expect($featuredLinks.eq(8).attr('href')).toBe('/en/pages')
       expect($featuredLinks.eq(8).children('h3').text().startsWith('GitHub Pages')).toBe(true)
-      expect($featuredLinks.eq(8).children('p').text().startsWith('You can create a website')).toBe(
-        true
-      )
+      expect(
+        $featuredLinks.eq(8).children('p').text().startsWith('Learn how to create a website')
+      ).toBe(true)
     })
 
     test('localized intro links link to localized pages', async () => {
@@ -74,7 +74,7 @@ describe('featuredLinks', () => {
       expect($featuredLinks.eq(0).attr('href')).toBe(
         `/en/enterprise-server@${enterpriseServerReleases.latest}/github/getting-started-with-github/githubs-products`
       )
-      expect($featuredLinks.eq(0).children('h3').text().startsWith("GitHub's products")).toBe(true)
+      expect($featuredLinks.eq(0).children('h3').text().startsWith('GitHub’s products')).toBe(true)
       expect(
         $featuredLinks
           .eq(0)
@@ -86,7 +86,7 @@ describe('featuredLinks', () => {
 
     // If any of these tests fail, check to see if the content has changed and update text if needed.
     test('product articles links respect versioning', async () => {
-      const enterpriseVersionedLandingPage = `/en/enterprise-server@${enterpriseServerReleases.latest}/packages`
+      const enterpriseVersionedLandingPage = `/en/enterprise-server@${enterpriseServerReleases.latest}/billing`
       const $ = await getDOM(enterpriseVersionedLandingPage)
       const $productArticlesLinks = $('[data-testid=product-articles-list] a')
       let msg = `Product article links are not rendered as expected on ${enterpriseVersionedLandingPage}`
@@ -95,21 +95,16 @@ describe('featuredLinks', () => {
       // Confirm that the following Enterprise link IS included on this Enterprise page.
       msg = `Enterprise article link is not rendered as expected on ${enterpriseVersionedLandingPage}`
       expect(
-        $productArticlesLinks.text().includes('Working with a GitHub Packages registry'),
+        $productArticlesLinks.text().includes('About licenses for GitHub Enterprise'),
         msg
       ).toBe(true)
 
       // Confirm that the following Dotcom-only links are NOT included on this Enterprise page.
       msg = `Dotcom-only article link is rendered, but should not be, on ${enterpriseVersionedLandingPage}`
-      expect($productArticlesLinks.text().includes('Working with the Container registry')).toBe(
+      expect($productArticlesLinks.text().includes('Adding or editing a payment method')).toBe(
         false
       )
-      expect(
-        $productArticlesLinks
-          .text()
-          .includes('Migrating to the Container registry from the Docker registry'),
-        msg
-      ).toBe(false)
+      expect($productArticlesLinks.text().includes('Setting your billing email'), msg).toBe(false)
     })
   })
 

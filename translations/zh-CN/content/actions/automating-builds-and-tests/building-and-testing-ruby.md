@@ -38,6 +38,8 @@ shortTitle: 构建和测试Ruby
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Ruby
 
 on:
@@ -102,6 +104,8 @@ strategy:
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Ruby CI
 
 on:
@@ -144,9 +148,11 @@ steps:
 - run: bundle install
 ```
 
+{% ifversion actions-caching %}
+
 ### 缓存依赖项
 
-如果您使用的是 {% data variables.product.prodname_dotcom %} 托管的运行器， `setup-ruby` 操作提供了在运行之间自动处理 gem 缓存的方法。
+`setup-ruby` 操作提供在运行之间自动处理 Gem 缓存的方法。
 
 要启用缓存，请设置以下内容。
 
@@ -159,11 +165,11 @@ steps:
 ```
 {% endraw %}
 
-这将配置 Bundler 以安装 gem 到 `vendor/cache`。 对于工作流程的每次成功运行，此文件夹将由 Actions 缓存，并重新下载用于后续的工作流程运行。 gemfile.lock 和 Ruby 版本的哈希值用作缓存密钥。 如果安装任何新 Gem 或更改版本，缓存将失效，Bundler 将进行全新安装。
+这将配置 Bundler 以安装 gem 到 `vendor/cache`。 对于工作流程的每次成功运行，此文件夹将由 {% data variables.product.prodname_actions %} 缓存，并重新下载用于后续的工作流程运行。 gemfile.lock 和 Ruby 版本的哈希值用作缓存密钥。 如果安装任何新 Gem 或更改版本，缓存将失效，Bundler 将进行全新安装。
 
 **无 setup-ruby 的缓存**
 
-为了加强缓存控制，如果您使用的是 {% data variables.product.prodname_dotcom %} 托管的运行器，可以直接使用 `actions/cache` 操作。 更多信息请参阅“<a href="/actions/guides/caching-dependencies-to-speed-up-workflows" class="dotcom-only">缓存依赖项以加快工作流程</a>”。
+为了加强对缓存的控制，您可以直接使用 `actions/cache` 操作。 更多信息请参阅“[缓存依赖项以加快工作流程](/actions/using-workflows/caching-dependencies-to-speed-up-workflows)”。
 
 ```yaml
 steps:
@@ -195,12 +201,16 @@ steps:
     bundle install --jobs 4 --retry 3
 ```
 
+{% endif %}
+
 ## 测试代码的矩阵
 
 下面的示例矩阵在 Ubuntu 和 macOS 上测试 MRI、JRuby 和 TruffleRuby 的所有稳定版本和头部版本。
 
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
+
+{% data reusables.actions.actions-use-sha-pinning-comment %}
 
 name: Matrix Testing
 
@@ -235,6 +245,8 @@ jobs:
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Linting
 
 on: [push]
@@ -261,6 +273,8 @@ jobs:
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Ruby Gem
 
 on:
@@ -275,10 +289,10 @@ on:
 jobs:
   build:
     name: Build + Publish
-    runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae or ghec %}
+    runs-on: ubuntu-latest
     permissions:
       packages: write
-      contents: read{% endif %}
+      contents: read
 
     steps:
       - uses: {% data reusables.actions.action-checkout %}

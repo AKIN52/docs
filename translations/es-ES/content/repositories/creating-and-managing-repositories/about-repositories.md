@@ -26,10 +26,10 @@ Puedes ser propietario de repositorios individualmente o puedes compartir la pro
 
 Puedes restringir quién tiene acceso a un repositorio seleccionando la visibilidad del mismo. Para obtener más información, consulta la sección "[Acerca de la visibilidad de un repositorio](#about-repository-visibility)".
 
-Para los repositorios que son propiedad de un usuario, les puedes dar a otras personas acceso de colaborador para que puedan colaborar en tu proyecto. Si un repositorio es propiedad de una organización, les puedes dar a los miembros de la organización permisos de acceso para colaborar en tu repositorio. Para obtener más información, consulta "[Niveles de permiso para un repositorio de cuenta de usuario](/articles/permission-levels-for-a-user-account-repository/)" y "[Roles de repositorio para una organización](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)".
+Para los repositorios que son propiedad de un usuario, les puedes dar a otras personas acceso de colaborador para que puedan colaborar en tu proyecto. Si un repositorio es propiedad de una organización, les puedes dar a los miembros de la organización permisos de acceso para colaborar en tu repositorio. Para obtener más información, consulta las secciones "[Niveles de permiso para un repositorio de una cuenta personal](/articles/permission-levels-for-a-user-account-repository/)" y "[Roles de repositorio para una organización](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)".
 
 {% ifversion fpt or ghec %}
-Con {% data variables.product.prodname_free_team %} para cuentas de usuario y de organizaciones, puedes trabajar con colaboradores ilimitados en repositorios públicos ilimitados con un juego completo de características, o en repositorios privados ilimitados con un conjunto limitado de características. Para obtener herramientas avanzadas para repositorios privados, puedes mejorar tu plan a {% data variables.product.prodname_pro %}, {% data variables.product.prodname_team %}, o {% data variables.product.prodname_ghe_cloud %}. {% data reusables.gated-features.more-info %}
+Con {% data variables.product.prodname_free_team %} para las cuentas personales y organizaciones, puedes trabajar con colaboradores ilimitados en repositorios públicos ilimitados con un conjunto de características completo o con repositorios privados ilimitados con un conjunto de características limitado. Para obtener herramientas avanzadas para repositorios privados, puedes mejorar tu plan a {% data variables.product.prodname_pro %}, {% data variables.product.prodname_team %}, o {% data variables.product.prodname_ghe_cloud %}. {% data reusables.gated-features.more-info %}
 {% else %}
 Cada persona y organización puede tener repositorios ilimitados e invitar a un número ilimitado de colaboradores a todos ellos.
 {% endif %}
@@ -52,7 +52,7 @@ Cuando creas un repositorio, puedes elegir si lo quieres hacer público o privad
 
 {% elsif ghae %}
 
-Cuando creas un repositorio que pertenece a tu cuenta de usuario, este siempre será privado. Cuando creas un repositorio que le pertenece a una organización, puedes elegir hacerlo privado o interno.
+Cuando crees un repositorio que le pertenezca a tu cuenta personal, este siempre será privado. Cuando creas un repositorio que le pertenece a una organización, puedes elegir hacerlo privado o interno.
 
 {% endif %}
 
@@ -90,7 +90,15 @@ Todos los miembros de las empresas tienen permiso de lectura para los repositori
 
 {% data reusables.repositories.internal-repo-default %}
 
-Cualquier miembro de la empresa puede bifurcar cualquier repositorio interno que pertenezca a una organización de esta. El repositorio bifurcado pertenecerá a la cuenta de usuario del miembro y la visibilidad de este será privada. Si se elimina a un usuario de todas las organizaciones que pertenezcan a la empresa, las bifurcaciones de dicho usuario para los repositorios internos se eliminarán automáticamente.
+{% ifversion ghec %}Unless your enterprise uses {% data variables.product.prodname_emus %}, members{% else %}Members{% endif %} of the enterprise can fork any internal repository owned by an organization in the enterprise. El repositorio bifurcado le pertenecerá a la cuenta personal del miembro y la visibilidad de la bifurcación será privada. Si se elimina a un usuario de todas las organizaciones que pertenezcan a la empresa, las bifurcaciones de dicho usuario para los repositorios internos se eliminarán automáticamente.
+
+{% ifversion ghec %}
+{% note %}
+
+**Note:** {% data variables.product.prodname_managed_users_caps %} cannot fork internal repositories. For more information, see "[About {% data variables.product.prodname_emus %}](/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users#abilities-and-restrictions-of-managed-user-accounts)."
+
+{% endnote %}
+{% endif %}
 {% endif %}
 
 ## Límites para ver contenido y diferencias en un repositorio
@@ -101,9 +109,9 @@ La mayoría de los límites que aparecen a continuación afectan tanto {% data v
 
 ### Límites de texto
 
-Los archivos de texto de más de **512 KB** siempre se mostrarán como texto simple. El código no es de sintaxis resaltada, y los archivos de prosa no se convierten a HTML (como Markdown, AsciiDoc, *etc.*).
+Los archivos de texto de más de **512 KB** siempre se mostrarán como texto simple. Code is not syntax highlighted, and prose files are not converted to HTML (such as Markdown, AsciiDoc, *etc.*).
 
-Los archivos de texto de más de **5 MB** están disponibles solo a través de sus URL originales, que se ofrecen a través de `{% data variables.product.raw_github_com %}`; por ejemplo, `https://{% data variables.product.raw_github_com %}/octocat/Spoon-Knife/master/index.html`. Haz clic en el botón **Raw** (Original) para obtener la URL original de un archivo.
+Text files over **5 MB** are only available through their raw URLs, which are served through `{% data variables.product.raw_github_com %}`; for example, `https://{% data variables.product.raw_github_com %}/octocat/Spoon-Knife/master/index.html`. Click the **Raw** button to get the raw URL for a file.
 
 ### Límites de diferencias
 
@@ -118,7 +126,7 @@ Se pueden mostrar algunas partes de una diferencia limitada, pero no se muestra 
 
 ### Límites de listas de confirmaciones
 
-Las páginas de vista comparada y de solicitudes de extracción muestran una lista de confirmaciones entre las revisiones de `base` y de `encabezado`. Estas listas están limitadas a **250** confirmaciones. Si superan ese límite, una nota indica que existen más confirmaciones (pero no se muestran).
+Las páginas de vista comparada y de solicitudes de extracción muestran una lista de confirmaciones entre las revisiones de `base` y de `encabezado`. These lists are limited to **250** commits. Si superan ese límite, una nota indica que existen más confirmaciones (pero no se muestran).
 
 ## Leer más
 

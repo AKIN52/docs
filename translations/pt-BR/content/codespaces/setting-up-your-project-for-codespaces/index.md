@@ -1,7 +1,8 @@
 ---
-title: 'Configurando seu repositório para {% data variables.product.prodname_codespaces %}'
+title: 'Configurando seu repositório para {% data variables.product.prodname_github_codespaces %}'
+shortTitle: Configurando seu repositório
 allowTitleToDifferFromFilename: true
-intro: 'Aprenda como dar os primeiros passos com {% data variables.product.prodname_codespaces %}, incluindo a configuração para linguagens específicas.'
+intro: 'Aprenda como dar os primeiros passos com {% data variables.product.prodname_github_codespaces %}, incluindo a configuração para linguagens específicas.'
 product: '{% data reusables.gated-features.codespaces %}'
 versions:
   fpt: '*'
@@ -9,7 +10,7 @@ versions:
 redirect_from:
   - /codespaces/getting-started-with-codespaces
 children:
-  - /configuring-codespaces-for-your-project
+  - /introduction-to-dev-containers
   - /setting-up-your-project-for-codespaces
   - /setting-up-your-nodejs-project-for-codespaces
   - /setting-up-your-dotnet-project-for-codespaces

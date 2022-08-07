@@ -20,7 +20,7 @@ topics:
 
 本指南说明如何使用 {% data variables.product.prodname_actions %} 构建并部署 Php 项目到 [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/)。
 
-{% ifversion fpt or ghec or ghae-issue-4856 %}
+{% ifversion fpt or ghec or ghae-issue-4856 or ghes > 3.4 %}
 
 {% note %}
 
@@ -54,6 +54,8 @@ topics:
 
 ```yaml{:copy}
 {% data reusables.actions.actions-not-certified-by-github-comment %}
+
+{% data reusables.actions.actions-use-sha-pinning-comment %}
 
 name: Build and deploy to Azure Kubernetes Service
 

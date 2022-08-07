@@ -33,15 +33,17 @@ redirect_from:
 {% data variables.product.prodname_dependabot %} consegue acionar fluxos de trabalho de {% data variables.product.prodname_actions %} nos seus pull requests e comentários. No entanto, certos eventos são tratados de maneira diferente.
 
 {% ifversion fpt or ghec or ghes > 3.3 or ghae-issue-5792 %}
-Para fluxos de trabalho iniciados por {% data variables.product.prodname_dependabot %} (`github.actor == "dependabot[bot]"`) que usam eventos de `pull_request`, `pull_request_review`, `pull_request_review_comment`, `push`, `create`, `deployment`, and `deployment_status`, aplicam-se as restrições a seguir:
+For workflows initiated by {% data variables.product.prodname_dependabot %} (`github.actor == 'dependabot[bot]'`) using the `pull_request`, `pull_request_review`, `pull_request_review_comment`, `push`, `create`, `deployment`, and `deployment_status` events, the following restrictions apply:
 {% endif %}
 
 - {% ifversion ghes = 3.3 %}`GITHUB_TOKEN` tem permissões somente leitura, a menos que seu administrador tenha removido as restrições.{% else %}`GITHUB_TOKEN` tem permissões somente leitura por padrão.{% endif %}
 - {% ifversion ghes = 3.3 %}Os segredos são inacessíveis, a menos que o seu administrador tenha removido restrições.{% else %}Os segredos são preenchidos a partir dos segredos de {% data variables.product.prodname_dependabot %}. Os segredos de {% data variables.product.prodname_actions %} não estão disponíveis.{% endif %}
 
 {% ifversion fpt or ghec or ghes > 3.3 or ghae-issue-5792 %}
-Para fluxos de trabalho iniciados por {% data variables.product.prodname_dependabot %} (`github.actor == "dependabot[bot]"`) que usam eventos de `pull_request_target`, se a referência da base do pull request foi criada por {% data variables.product.prodname_dependabot %} (`github.actor == "dependabot[bot]"`), the `GITHUB_TOKEN` será somente leitura e os segredos não estarão disponíveis.
+For workflows initiated by {% data variables.product.prodname_dependabot %} (`github.actor == 'dependabot[bot]'`) using the `pull_request_target` event, if the base ref of the pull request was created by {% data variables.product.prodname_dependabot %} (`github.actor == 'dependabot[bot]'`), the `GITHUB_TOKEN` will be read-only and secrets are not available.
 {% endif %}
+
+{% ifversion actions-stable-actor-ids %}These restrictions apply even if the workflow is re-run by a different actor.{% endif %}
 
 Para obter mais informações, consulte ["Manter seus GitHub Actions e fluxos de trabalho seguro: Evitando solicitações de pwn"](https://securitylab.github.com/research/github-actions-preventing-pwn-requests/).
 
@@ -224,7 +226,15 @@ jobs:
 
 ### Reexecutando manualmente um fluxo de trabalho
 
+{% ifversion actions-stable-actor-ids %}
+
+When you manually re-run a Dependabot workflow, it will run with the same privileges as before even if the user who initiated the rerun has different privileges. Para obter mais informações, consulte "[Executando novamente os fluxos de trabalho e trabalhos](/actions/managing-workflow-runs/re-running-workflows-and-jobs)".
+
+{% else %}
+
 Você também pode executar novamente um fluxo de trabalho pendente no Dependabot, e ele será executado com um token de leitura-gravação e acesso a segredos. Antes de executar manualmente um fluxo de trabalho com falha, você deve sempre verificar se a dependência está sendo atualizada para garantir que a mudança não introduza qualquer comportamento malicioso ou não intencional.
+
+{% endif %}
 
 ## Automações comuns de dependência
 
@@ -452,9 +462,9 @@ jobs:
 
 ### Habilitar o merge automático em um pull request
 
-Se você quiser fazer merge automático dos seus pull requests, você poderá usar a funcionalidade de merge automático de {% data variables.product.prodname_dotcom %}. Isto permite que o pull request seja mesclado quando todos os testes e aprovações forem cumpridos com sucesso. Para obter mais informações sobre merge automático, consulte "[Fazer merge automático de um pull request](/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)".
+Se você quiser permitir que os mantenedores marquem certos pull requests para o merge automático, você pode usar a funcionalidade de merge automático de {% data variables.product.prodname_dotcom %}. Isto permite que o pull request seja mesclado quando todos os testes e aprovações forem cumpridos com sucesso. Para obter mais informações sobre merge automático, consulte "[Fazer merge automático de um pull request](/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)".
 
-Aqui está um exemplo de como habilitar o merge automático para todas as atualizações de patch para `my-dependency`:
+Em vez disso, você pode usar {% data variables.product.prodname_actions %} e {% data variables.product.prodname_cli %}. Aqui está um exemplo que faz o merge automático de todas as atualizações do patch para `my-dependency`:
 
 {% ifversion ghes = 3.3 %}
 
@@ -465,8 +475,8 @@ name: Dependabot auto-merge
 on: pull_request_target
 
 permissions:
-  pull-requests: write
   contents: write
+  pull-requests: write
 
 jobs:
   dependabot:
@@ -497,8 +507,8 @@ name: Dependabot auto-merge
 on: pull_request
 
 permissions:
-  pull-requests: write
   contents: write
+  pull-requests: write
 
 jobs:
   dependabot:

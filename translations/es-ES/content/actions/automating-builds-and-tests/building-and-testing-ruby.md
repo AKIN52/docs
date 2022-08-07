@@ -38,6 +38,8 @@ Para comenzar rápidamente, agrega el flujo de trabajo inicial al directorio de 
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Ruby
 
 on:
@@ -102,6 +104,8 @@ El flujo de trabajo ya actualizado en su totalidad con una estrategia de matriz 
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Ruby CI
 
 on:
@@ -144,9 +148,11 @@ steps:
 - run: bundle install
 ```
 
+{% ifversion actions-caching %}
+
 ### Almacenar dependencias en caché
 
-Si estás utilizando ejecutores hospedados en {% data variables.product.prodname_dotcom %}, las acciones de `setup-ruby` proporcionarán un método para manejar automáticamente el guardado en caché de tus gemas entre ejecuciones.
+La acción `setup-ruby` proporciona un método para manejar automáticamente el almacenamiento en caché de tus gemas entre ejecuciones.
 
 Para habilitar el guardado en caché, configura lo siguiente.
 
@@ -159,11 +165,11 @@ steps:
 ```
 {% endraw %}
 
-Esto configurará a bundler para que instale tus gemas en `vendor/cache`. Para cada ejecución exitosa de tu flujo de trabajo, Actions guardará esta carpeta en caché y volverá a descargarse para cualquier ejecución de flujo de trabajo subsecuente. Se utiliza un hash de tu gemfile.lock y de la versión de Ruby como la clave de caché. Si instalas cualquier gema nueva o cambias una versión, el caché se invalidará y bundler realizará una instalación desde cero.
+Esto configurará a bundler para que instale tus gemas en `vendor/cache`. Para cada ejecución exitosa de tu flujo de trabajo, {% data variables.product.prodname_actions %} almacenará esta carpeta en caché y volverá a descargarla para ejecuciones de flujo de trabajo posteriores. Se utiliza un hash de tu gemfile.lock y de la versión de Ruby como la clave de caché. Si instalas cualquier gema nueva o cambias una versión, el caché se invalidará y bundler realizará una instalación desde cero.
 
 **Guardar en caché sin setup-ruby**
 
-Para tener un mejor control sobre el guardado en caché, si estás utilizando ejecutores hospedados en {% data variables.product.prodname_dotcom %}, puedes utilizar la acción `actions/cache` directamente. Para obtener más información, consulta la sección "<a href="/actions/guides/caching-dependencies-to-speed-up-workflows" class="dotcom-only">Almacenar las dependencias en caché para agilizar los flujos de trabajo</a>".
+Para tener un mejor control sobre el almacenamiento en caché, puedes utilizar la acción de `actions/cache` directamente. Para obtener más información, consulta la sección "[Almacenar las dependencias en caché para agilizar los flujos de trabajo](/actions/using-workflows/caching-dependencies-to-speed-up-workflows)".
 
 ```yaml
 steps:
@@ -195,12 +201,16 @@ steps:
     bundle install --jobs 4 --retry 3
 ```
 
+{% endif %}
+
 ## Probar tu código en matrices
 
 La siguiente matriz de ejemplo prueba todos los lanzamientos estables y versiones principales de MRI, JRuby y TruffleRuby en Ubuntu y macOS.
 
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
+
+{% data reusables.actions.actions-use-sha-pinning-comment %}
 
 name: Matrix Testing
 
@@ -235,6 +245,8 @@ El siguiente ejemplo instala `rubocop` y lo utiliza para limpiar todos los archi
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Linting
 
 on: [push]
@@ -261,6 +273,8 @@ Puedes almacenar todos los tokens de acceso o credenciales necesarios para publi
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Ruby Gem
 
 on:
@@ -275,10 +289,10 @@ on:
 jobs:
   build:
     name: Build + Publish
-    runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae or ghec %}
+    runs-on: ubuntu-latest
     permissions:
       packages: write
-      contents: read{% endif %}
+      contents: read
 
     steps:
       - uses: {% data reusables.actions.action-checkout %}

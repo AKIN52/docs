@@ -14,7 +14,7 @@ Você pode navegar, pesquisar e executar comandos em {% data variables.product.p
 
 ### Navegação rápida
 
-Ao abrira paleta de comando, as sugestões são otimizadas para facilitar o acesso a partir de qualquer lugar em um repositório, conta de usuário, ou organização para páginas de nível superior, como a página de problemas. Se o local que você deseja não estiver listado, comece a digitar o nome ou número para a localização refinar as sugestões.
+Ao abrira paleta de comando, as sugestões são otimizadas para facilitar o acesso a partir de qualquer lugar em um repositório, conta pessoal, ou organização para páginas de nível superior, como a página de problemas. Se o local que você deseja não estiver listado, comece a digitar o nome ou número para a localização refinar as sugestões.
 
 ![Sugestões da paleta de comandos](/assets/images/help/command-palette/command-palette-navigation-repo-default.png)
 
@@ -39,8 +39,8 @@ Ao abrir a paleta de comando, ela mostra sua localização no canto superior esq
 {% note %}
 
 **Notas:**
-- Se você estiver editando o texto do Markdown, abra a paleta de comandos com <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>K</kbd> (Windows e Linux) ou <kbd>Comando</kbd>+<kbd>Opção</kbd>+<kbd>K</kbd> (Mac).
-- Se você estiver trabalhando em um projeto (beta), uma paleta de comandos específica do projeto será exibida no lugar. Para obter mais informações, consulte "[Personalizar as visualizações do seu projeto (beta)](/issues/trying-out-the-new-projects-experience/customizing-your-project-views)".
+- If you are editing Markdown text, open the command palette with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>K</kbd> (Windows and Linux) or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>K</kbd> (Mac).{% ifversion projects-v2 %}
+- If you are working on a {% data variables.projects.project_v2 %}, a project-specific command palette is displayed instead. For more information, see "[Customizing a view](/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-a-view)."{% endif %}
 
 {% endnote %}
 
@@ -151,9 +151,9 @@ Estes comandos estão disponíveis em todos os escopos.
 | `Importar repositório`                 | Criar um novo repositório importando um projeto de outro sistema de controle de versão. Para obter mais informações, consulte "[Importando um repositório com o Importador do GitHub](/get-started/importing-your-projects-to-github/importing-source-code-to-github/importing-a-repository-with-github-importer)". |
 | `Novo gist`                            | Abra um novo gist. Para obter mais informações, consulte[Criando um gist](/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists)."                                                                                                                                                   |
 | `Nova organização`                     | Criar uma nova organização Para obter mais informações, consulte "[Criar uma nova organização do zero](/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch)".                                                                                                        |
-| `Novo projeto`                         | Criar um novo quadro de projeto. Para obter mais informações, consulte "[Criar um quadro de projeto](/issues/trying-out-the-new-projects-experience/creating-a-project)".                                                                                                                                           |
+| `Novo projeto`                         | Criar um novo quadro de projeto. Para obter mais informações, consulte "[Criar um quadro de projeto](/issues/planning-and-tracking-with-projects/creating-projects/creating-a-project)".                                                                                                                            |
 | `Novo repositório`                     | Criar um novo repositório a partir do zero. Para obter mais informações, consulte "[Criar um novo repositório](/repositories/creating-and-managing-repositories/creating-a-new-repository)."                                                                                                                        |
-| `Alterar tema para <theme name>` | Mude diretamente para um tema diferente para a interface do usuário. Para obter mais informações, consulte "[Gerenciando as suas configurações de tema](/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/managing-your-theme-settings)".                        |
+| `Alterar tema para <theme name>` | Mude diretamente para um tema diferente para a interface do usuário. Para obter mais informações, consulte "[Gerenciando as suas configurações de tema](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-personal-account-settings/managing-your-theme-settings)".             |
 
 
 ### Comandos da organização
@@ -192,10 +192,10 @@ Estes comandos só estão disponíveis quando você abre a paleta de comandos em
 
 | Comando                         | Comportamento                                                                                                                                                                                                                                               |
 |:------------------------------- |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Excluir discussão...`          | Excluir permanentemente a discussão. Para obter mais informações, consulte "[Gerenciar discussões no seu repositório](/discussions/managing-discussions-for-your-community/managing-discussions-in-your-repository#deleting-a-discussion)".                 |
+| `Excluir discussão...`          | Excluir permanentemente a discussão. Para obter mais informações, consulte "[Gerenciando discussões](/discussions/managing-discussions-for-your-community/managing-discussions#deleting-a-discussion)".                                                     |
 | `Editar texto da discussão`     | Abra o texto principal da discussão que está pronto para edição.                                                                                                                                                                                            |
 | `Assinar`/`Cancelar assinatura` | Opte por participar ou não receber notificações de adições à discussão. Para obter mais informações, consulte "[Sobre notificações](/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications)". |
-| `Transferir discussão...`       | Mover a discussão para um repositório diferente. Para obter mais informações, consulte "[Gerenciar discussões no seu repositório](/discussions/managing-discussions-for-your-community/managing-discussions-in-your-repository#transferring-a-discussion)". |
+| `Transferir discussão...`       | Mover a discussão para um repositório diferente. Para obter mais informações, consulte "[Gerenciando discussões](/discussions/managing-discussions-for-your-community/managing-discussions#transferring-a-discussion)".                                     |
 
 ### Comandos de problemas
 

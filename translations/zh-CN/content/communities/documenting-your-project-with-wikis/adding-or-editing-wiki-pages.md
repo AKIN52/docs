@@ -34,7 +34,7 @@ shortTitle: 管理 wiki 网页
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-wiki %}
 4. 使用 wiki 侧栏，导航到您要更改的页面。 在页面的右上角，单击 **Edit（编辑）**。 ![Wiki 编辑页面按钮](/assets/images/help/wiki/wiki_edit_page_button.png)
-5. 使用文本编辑器添加页面内容。 ![Wiki WYSIWYG](/assets/images/help/wiki/wiki_wysiwyg.png)
+5. Use the text editor to edit the page's content. ![Wiki WYSIWYG](/assets/images/help/wiki/wiki_wysiwyg.png)
 6. 输入提交消息，描述您的更改。 ![Wiki 提交消息](/assets/images/help/wiki/wiki_commit_message.png)
 7. 要提交更改到 wiki，请单击 **Save Page（保存页面）**。
 
@@ -44,7 +44,7 @@ Wiki 是 Git 仓库的一部分，因此您可以在本地进行更改，然后�
 
 ### 克隆 wiki 到计算机
 
-每个 wiki 都提供一种将其内容克隆到计算机的简易方式。 您可以选择使用提供的 URL 将仓库克隆到计算机：
+每个 wiki 都提供一种将其内容克隆到计算机的简易方式。 在 {% data variables.product.product_name %} 上创建初始页面后，您可以使用提供的 URL 将存储库克隆到您的计算机：
 
 ```shell
 $ git clone https://github.com/<em>YOUR_USERNAME</em>/<em>YOUR_REPOSITORY</em>.wiki.git

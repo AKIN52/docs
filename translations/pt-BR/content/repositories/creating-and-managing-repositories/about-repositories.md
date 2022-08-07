@@ -26,10 +26,10 @@ Você pode possuir repositórios individualmente ou compartilhar a propriedade d
 
 É possível restringir quem tem acesso a um repositório escolhendo a visibilidade do repositório. Para obter mais informações, consulte "[Sobre a visibilidade do repositório](#about-repository-visibility)."
 
-Para repositórios possuídos pelo usuário, você pode fornecer a outras pessoas acesso de colaborador para que elas possam colaborar no seu projeto. Se um repositório pertencer a uma organização, você poderá fornecer aos integrantes da organização permissões de acesso para colaboração no seu repositório. Para obter mais informações, consulte "[Níveis de permissão para uma repositório de conta de usuário](/articles/permission-levels-for-a-user-account-repository/)" e "[Funções de repositório para uma organização](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)".
+Para repositórios possuídos pelo usuário, você pode fornecer a outras pessoas acesso de colaborador para que elas possam colaborar no seu projeto. Se um repositório pertencer a uma organização, você poderá fornecer aos integrantes da organização permissões de acesso para colaboração no seu repositório. Para obter mais informações, consulte "[Níveis de permissão para uma repositório de conta pessoal](/articles/permission-levels-for-a-user-account-repository/)" e "[Funções de repositório para uma organização](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)".
 
 {% ifversion fpt or ghec %}
-Com o {% data variables.product.prodname_free_team %} em contas de usuário e organizações, você pode trabalhar com colaboradores ilimitados em repositórios públicos ilimitados, com um conjunto completo de recursos, ou em repositórios privados ilimitados com um conjunto de recursos limitados. Para obter ferramentas avançadas para repositórios privados, você pode fazer o upgrade para {% data variables.product.prodname_pro %}, {% data variables.product.prodname_team %} ou {% data variables.product.prodname_ghe_cloud %}. {% data reusables.gated-features.more-info %}
+Com o {% data variables.product.prodname_free_team %} em contas pessoais e de organizações, você pode trabalhar com colaboradores ilimitados em repositórios públicos ilimitados, com um conjunto completo de recursos, ou em repositórios privados ilimitados com um conjunto de recursos limitados. Para obter ferramentas avançadas para repositórios privados, você pode fazer o upgrade para {% data variables.product.prodname_pro %}, {% data variables.product.prodname_team %} ou {% data variables.product.prodname_ghe_cloud %}. {% data reusables.gated-features.more-info %}
 {% else %}
 Cada pessoa e organização podem ter repositórios ilimitados e convidar um número ilimitado de colaboradores para todos os repositórios.
 {% endif %}
@@ -52,7 +52,7 @@ Ao criar um repositório, você pode optar por tornar o repositório público ou
 
 {% elsif ghae %}
 
-Ao criar um repositório pertencente à sua conta de usuário, o repositório é sempre privado. Ao criar um repositório pertencente a uma organização, você pode optar por tornar o repositório privado ou interno.
+Ao criar um repositório pertencente à sua conta pessoal, o repositório é sempre privado. Ao criar um repositório pertencente a uma organização, você pode optar por tornar o repositório privado ou interno.
 
 {% endif %}
 
@@ -90,7 +90,15 @@ Todos os integrantes da empresa têm permissões de leitura no repositório inte
 
 {% data reusables.repositories.internal-repo-default %}
 
-Qualquer integrante da empresa pode bifurcar qualquer repositório interno pertencente a uma organização da empresa. O repositório bifurcado pertencerá à conta de usuário do integrante e a visibilidade da bifurcação será privada. Se um usuário for removido de todas as organizações pertencentes à empresa, essas bifurcações do usuário dos repositórios internos do usuário serão removidas automaticamente.
+{% ifversion ghec %}Unless your enterprise uses {% data variables.product.prodname_emus %}, members{% else %}Members{% endif %} of the enterprise can fork any internal repository owned by an organization in the enterprise. O repositório bifurcado pertencerá à conta pessoal do integrante e a visibilidade da bifurcação será privada. Se um usuário for removido de todas as organizações pertencentes à empresa, essas bifurcações do usuário dos repositórios internos do usuário serão removidas automaticamente.
+
+{% ifversion ghec %}
+{% note %}
+
+**Note:** {% data variables.product.prodname_managed_users_caps %} cannot fork internal repositories. For more information, see "[About {% data variables.product.prodname_emus %}](/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users#abilities-and-restrictions-of-managed-user-accounts)."
+
+{% endnote %}
+{% endif %}
 {% endif %}
 
 ## Limites para visualização de conteúdo e diffs no repositório
@@ -101,9 +109,9 @@ A maioria dos limites abaixo afetam o {% data variables.product.product_name %} 
 
 ### Limites de texto
 
-Os arquivos de texto acima de **512 KB** são sempre exibidos como texto sem formatação. O código não destaca a sintaxe e arquivos em prosa não são convertidos em HTML (como markdown, AsciiDoc *etc.*).
+Os arquivos de texto acima de **512 KB** são sempre exibidos como texto sem formatação. Code is not syntax highlighted, and prose files are not converted to HTML (such as Markdown, AsciiDoc, *etc.*).
 
-Arquivos de texto acima de **5 MB** somente estão disponíveis por meio de suas URLs brutas, que são servidas em `{% data variables.product.raw_github_com %}`; por exemplo, `https://{% data variables.product.raw_github_com %}/octocat/Spoon-Knife/master/index.html`. Clique no botão **Raw** (Bruto) para obter o URL bruto de um arquivo.
+Text files over **5 MB** are only available through their raw URLs, which are served through `{% data variables.product.raw_github_com %}`; for example, `https://{% data variables.product.raw_github_com %}/octocat/Spoon-Knife/master/index.html`. Click the **Raw** button to get the raw URL for a file.
 
 ### Limites de diff
 
@@ -118,7 +126,7 @@ Algumas partes de um diff limitado podem ser exibidas, mas qualquer excedente de
 
 ### Limites de listas de commits
 
-As páginas de visualização comparada e pull requests exibem uma lista de commits entre as revisões `base` e `head`. Essas listas são limitadas a **250** commits. Caso o limite seja excedido, uma observação indicará que commits adicionais estão presentes (mas não são mostrados).
+As páginas de visualização comparada e pull requests exibem uma lista de commits entre as revisões `base` e `head`. These lists are limited to **250** commits. Caso o limite seja excedido, uma observação indicará que commits adicionais estão presentes (mas não são mostrados).
 
 ## Leia mais
 

@@ -26,10 +26,10 @@ topics:
 
 リポジトリの表示設定を選択して、リポジトリにアクセスできるユーザを制限できます。 詳細は「[リポジトリの可視性について](#about-repository-visibility)」を参照してください。
 
-ユーザが所有するリポジトリでは、他の人々にコラボレーターアクセスを与えて、プロジェクトでコラボレーションするようにできます。 リポジトリが Organization によって所有されている場合は、Organization のメンバーにアクセス権限を与え、リポジトリ上でコラボレーションするようにできます。 For more information, see "[Permission levels for a user account repository](/articles/permission-levels-for-a-user-account-repository/)" and "[Repository roles for an organization](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)."
+ユーザが所有するリポジトリでは、他の人々にコラボレーターアクセスを与えて、プロジェクトでコラボレーションするようにできます。 リポジトリが Organization によって所有されている場合は、Organization のメンバーにアクセス権限を与え、リポジトリ上でコラボレーションするようにできます。 For more information, see "[Permission levels for a personal account repository](/articles/permission-levels-for-a-user-account-repository/)" and "[Repository roles for an organization](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)."
 
 {% ifversion fpt or ghec %}
-ユーザアカウントと Organization の {% data variables.product.prodname_free_team %} を使用すると、完全な機能セットを備えた無制限のパブリックリポジトリ、または機能セットを制限した無制限のプライベートリポジトリで無制限のコラボレータと連携できます。 プライベートリポジトリの高度なツールを入手するには、 {% data variables.product.prodname_pro %}、{% data variables.product.prodname_team %}、または {% data variables.product.prodname_ghe_cloud %} にアップグレードします。 {% data reusables.gated-features.more-info %}
+With {% data variables.product.prodname_free_team %} for personal accounts and organizations, you can work with unlimited collaborators on unlimited public repositories with a full feature set, or unlimited private repositories with a limited feature set. プライベートリポジトリの高度なツールを入手するには、 {% data variables.product.prodname_pro %}、{% data variables.product.prodname_team %}、または {% data variables.product.prodname_ghe_cloud %} にアップグレードします。 {% data reusables.gated-features.more-info %}
 {% else %}
 各個人および Organization は、無制限のリポジトリを所有でき、すべてのリポジトリにコラボレータを何人でも招待できます。
 {% endif %}
@@ -52,7 +52,7 @@ When you create a repository, you can choose to make the repository public or pr
 
 {% elsif ghae %}
 
-When you create a repository owned by your user account, the repository is always private. When you create a repository owned by an organization, you can choose to make the repository private or internal.
+When you create a repository owned by your personal account, the repository is always private. When you create a repository owned by an organization, you can choose to make the repository private or internal.
 
 {% endif %}
 
@@ -90,7 +90,15 @@ All enterprise members have read permissions to the internal repository, but int
 
 {% data reusables.repositories.internal-repo-default %}
 
-Any member of the enterprise can fork any internal repository owned by an organization in the enterprise. The forked repository will belong to the member's user account, and the visibility of the fork will be private. Enterprise が所有するすべての Organization からユーザが削除されると、そのユーザの内部リポジトリのフォークは自動的に削除されます。
+{% ifversion ghec %}Unless your enterprise uses {% data variables.product.prodname_emus %}, members{% else %}Members{% endif %} of the enterprise can fork any internal repository owned by an organization in the enterprise. The forked repository will belong to the member's personal account, and the visibility of the fork will be private. Enterprise が所有するすべての Organization からユーザが削除されると、そのユーザの内部リポジトリのフォークは自動的に削除されます。
+
+{% ifversion ghec %}
+{% note %}
+
+**Note:** {% data variables.product.prodname_managed_users_caps %} cannot fork internal repositories. For more information, see "[About {% data variables.product.prodname_emus %}](/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users#abilities-and-restrictions-of-managed-user-accounts)."
+
+{% endnote %}
+{% endif %}
 {% endif %}
 
 ## リポジトリでコンテンツと diff の表示を制限する
@@ -101,9 +109,9 @@ Any member of the enterprise can fork any internal repository owned by an organi
 
 ### テキストの制限
 
-Text files over **512 KB** are always displayed as plain text. コードの構文は強調表示されず、prose ファイルは HTML (Markdown、AsciiDoc、*その他*) に変換されません。
+Text files over **512 KB** are always displayed as plain text. Code is not syntax highlighted, and prose files are not converted to HTML (such as Markdown, AsciiDoc, *etc.*).
 
-**5 MB** を超えるテキスト ファイルは raw URL を介してしか使用できません。これは `{% data variables.product.raw_github_com %}` を通じて、たとえば `https://{% data variables.product.raw_github_com %}/octocat/Spoon-Knife/master/index.html` のように提供されます。 ファイルの raw URL を取得するには、[**Raw**] ボタンを押します。
+Text files over **5 MB** are only available through their raw URLs, which are served through `{% data variables.product.raw_github_com %}`; for example, `https://{% data variables.product.raw_github_com %}/octocat/Spoon-Knife/master/index.html`. Click the **Raw** button to get the raw URL for a file.
 
 ### diff の制限
 
@@ -118,7 +126,7 @@ diff はきわめて大きくなることがあるため、コミット、プル
 
 ### コミット リストの制限
 
-比較ビューとプルリクエストのページでは、`base` リビジョンと `head` リビジョンの間にコミットのリストが表示されます。 このリストは **250** コミットに制限されています。 その制限を超える場合は、追加のコミットがあるという注意書きが表示されます (コミット自体は表示されません)。
+比較ビューとプルリクエストのページでは、`base` リビジョンと `head` リビジョンの間にコミットのリストが表示されます。 These lists are limited to **250** commits. その制限を超える場合は、追加のコミットがあるという注意書きが表示されます (コミット自体は表示されません)。
 
 ## 参考リンク
 

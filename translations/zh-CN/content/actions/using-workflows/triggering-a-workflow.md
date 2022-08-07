@@ -20,14 +20,7 @@ miniTocMaxHeadingLevel: 3
 
 ## 关于工作流程触发器
 
-工作流程触发器是导致工作流程运行的事件。 这些事件可以是：
-
-- 工作流程存储库中发生的事件
-- 在 {% data variables.product.product_name %} 之外发生并在 {% data variables.product.product_name %} 上触发 `repository_dispatch` 事件的事件
-- 预定时间
-- 手册
-
-例如，您可以将工作流程配置为在推送到存储库的默认分支、创建发行版或打开议题时运行。
+{% data reusables.actions.about-triggers %}
 
 工作流程触发器使用 `on` 键定义。 更多信息请参阅“[{% data variables.product.prodname_actions %} 的工作流程语法](/articles/workflow-syntax-for-github-actions#on)”。
 
@@ -191,7 +184,7 @@ jobs:
 
 ## 进一步控制工作流程的运行方式
 
-如果需要比事件、事件活动类型或事件筛选器更精细的控制，则可以使用条件{% ifversion fpt or ghae or ghes > 3.1 or ghec %} 和环境{% endif %} 来控制工作流程中的单个作业或步骤是否运行。
+如果需要比事件、事件活动类型或事件筛选器更精细的控制，则可以使用条件 和环境 来控制工作流程中的单个作业或步骤是否运行。
 
 ### 使用条件
 
@@ -244,8 +237,6 @@ jobs:
 
 有关事件上下文中可用信息的详细信息，请参阅“[使用事件信息](#using-event-information)”。 有关如何使用条件语句的详细信息，请参阅“[表达式](/actions/learn-github-actions/expressions)”。
 
-{% ifversion fpt or ghae or ghes > 3.1 or ghec %}
-
 ### 使用环境手动触发工作流程作业
 
 如果要手动触发工作流程中的特定作业，可以使用需要特定团队或用户批准的环境。 首先，使用所需的审阅者配置环境。 更多信息请参阅“[使用环境进行部署](/actions/deployment/targeting-different-environments/using-environments-for-deployment)”。 然后，使用 `environment:` 键在工作流程的作业中引用环境名称。 在至少有一个审阅者批准该作业之前，引用环境的任何作业都不会运行。
@@ -279,7 +270,6 @@ jobs:
 {% data reusables.gated-features.environments %}
 
 {% endnote %}
-{% endif %}
 
 ## 可用事件
 

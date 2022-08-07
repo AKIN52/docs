@@ -38,6 +38,8 @@ Para iniciar rapidamente, adicione o fluxo de trabalho inicial para o diretório
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Ruby
 
 on:
@@ -102,6 +104,8 @@ O fluxo de trabalho totalmente atualizado com uma estratégia de matriz pode par
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Ruby CI
 
 on:
@@ -144,9 +148,11 @@ steps:
 - run: bundle install
 ```
 
+{% ifversion actions-caching %}
+
 ### Memorizar dependências
 
-Se você estiver usando executores hospedados em {% data variables.product.prodname_dotcom %}, as ações do `setup-ruby` fornecem um método para lidar automaticamente com o cache dos seus gems entre as execuções.
+As ações `setup-ruby` fornecem um método para lidar automaticamente com o cache dos seus gems entre as execuções.
 
 Para habilitar o cache, defina o seguinte.
 
@@ -159,11 +165,11 @@ steps:
 ```
 {% endraw %}
 
-Isso irá configurar o bundler para instalar seus gems em `vendor/cache`. Para cada execução bem sucedida do seu fluxo de trabalho, esta pasta será armazenada em cache por Ações e baixada novamente para subsequentes execuções de fluxo de trabalho. São usados um hash do seu gemfile.lock e versão do Ruby como a chave de cache. Se você instalar qualquer novo gem, ou mudar uma versão, o cache será invalidado e o bundler fará uma nova instalação.
+Isso irá configurar o bundler para instalar seus gems em `vendor/cache`. Para cada execução bem-sucedida do seu fluxo de trabalho, esta pasta será armazenada em cache por {% data variables.product.prodname_actions %} e baixada novamente para as execuções subsequentes do fluxo de trabalho. São usados um hash do seu gemfile.lock e versão do Ruby como a chave de cache. Se você instalar qualquer novo gem, ou mudar uma versão, o cache será invalidado e o bundler fará uma nova instalação.
 
 **Fazer armazenamento em cache sem o setup-ruby**
 
-Para maior controle sobre o cache, se você estiver usando executores hospedados em {% data variables.product.prodname_dotcom %}, você poderá usar a ação `actions/cache` diretamente. Para obter mais informações, consulte "<a href="/actions/guides/caching-dependencies-to-speed-up-workflows" class="dotcom-only">Memorizar dependências para acelerar fluxos de trabalho</a>".
+Para maior controle sobre o cache, você pode usar a ação `actions/cache` diretamente. Para obter mais informações, consulte "[Memorizar dependências para acelerar fluxos de trabalho](/actions/using-workflows/caching-dependencies-to-speed-up-workflows)".
 
 ```yaml
 steps:
@@ -195,12 +201,16 @@ steps:
     bundle install --jobs 4 --retry 3
 ```
 
+{% endif %}
+
 ## Matriz que testa o seu código
 
 O exemplo a seguir da matriz testa todas as versões estáveis e versões principais de MRI, JRuby e TruffleRuby no Ubuntu e no macOS.
 
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
+
+{% data reusables.actions.actions-use-sha-pinning-comment %}
 
 name: Matrix Testing
 
@@ -235,6 +245,8 @@ O exemplo a seguir instala `rubocop` e o utiliza para fazer lint de todos os arq
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Linting
 
 on: [push]
@@ -261,6 +273,8 @@ Você pode armazenar qualquer token de acesso ou credenciais necessárias para p
 ```yaml
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Ruby Gem
 
 on:
@@ -275,10 +289,10 @@ on:
 jobs:
   build:
     name: Build + Publish
-    runs-on: ubuntu-latest{% ifversion fpt or ghes > 3.1 or ghae or ghec %}
+    runs-on: ubuntu-latest
     permissions:
       packages: write
-      contents: read{% endif %}
+      contents: read
 
     steps:
       - uses: {% data reusables.actions.action-checkout %}

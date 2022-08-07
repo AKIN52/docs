@@ -31,7 +31,6 @@ includeGuides:
   - /admin/authentication/managing-identity-and-access-for-your-enterprise/managing-team-synchronization-for-organizations-in-your-enterprise
   - /admin/authentication/managing-identity-and-access-for-your-enterprise/switching-your-saml-configuration-from-an-organization-to-an-enterprise-account
   - /admin/authentication/managing-your-enterprise-users-with-your-identity-provider/about-enterprise-managed-users
-  - /admin/authentication/managing-your-enterprise-users-with-your-identity-provider/auditing-activity-in-your-enterprise
   - /admin/authentication/managing-your-enterprise-users-with-your-identity-provider/configuring-saml-single-sign-on-for-enterprise-managed-users
   - /admin/authentication/managing-your-enterprise-users-with-your-identity-provider/configuring-scim-provisioning-for-enterprise-managed-users
   - /admin/authentication/managing-your-enterprise-users-with-your-identity-provider/configuring-scim-provisioning-for-enterprise-managed-users-with-okta
@@ -53,6 +52,8 @@ includeGuides:
   - /admin/configuration/configuring-your-enterprise/verifying-or-approving-a-domain-for-your-enterprise
   - /admin/configuration/configuring-your-enterprise/managing-github-mobile-for-your-enterprise
   - /admin/configuration/connecting-your-enterprise-account-to-github-enterprise-cloud
+  - /admin/configuration/configuring-your-enterprise/configuring-ssh-connections-to-your-instance
+  - /admin/configuration/configuring-your-enterprise/configuring-host-keys-for-your-instance
   - /admin/configuration/enabling-and-scheduling-maintenance-mode
   - /admin/configuration/configuring-github-connect/enabling-automatic-user-license-sync-for-your-enterprise
   - /admin/configuration/enabling-private-mode
@@ -75,6 +76,7 @@ includeGuides:
   - /admin/enterprise-management/setting-up-external-monitoring
   - /admin/enterprise-management/upgrade-requirements
   - /admin/enterprise-management/upgrading-github-enterprise-server
+  - /admin/enterprise-management/monitoring-your-appliance/about-system-logs
   - /admin/enterprise-support/about-github-enterprise-support
   - /admin/github-actions/about-using-actions-in-your-enterprise
   - /admin/github-actions/backing-up-and-restoring-github-enterprise-server-with-github-actions-enabled
@@ -103,7 +105,6 @@ includeGuides:
   - /admin/policies/managing-pre-receive-hooks-on-the-github-enterprise-server-appliance
   - /admin/user-management/about-migrations
   - /admin/user-management/adding-people-to-teams
-  - /admin/user-management/audited-actions
   - /admin/user-management/auditing-ssh-keys
   - /admin/user-management/auditing-users-across-your-enterprise
   - /admin/user-management/configuring-git-large-file-storage-for-your-enterprise
@@ -115,11 +116,19 @@ includeGuides:
   - /admin/user-management/exporting-migration-data-from-your-enterprise
   - /admin/user-management/importing-data-from-third-party-version-control-systems
   - /admin/user-management/managing-dormant-users
-  - /admin/user-management/managing-global-webhooks
+  - /admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/about-the-audit-log-for-your-enterprise
+  - /admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/accessing-the-audit-log-for-your-enterprise
+  - /admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/searching-the-audit-log-for-your-enterprise
+  - /admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/configuring-the-audit-log-for-your-enterprise
+  - /admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/exporting-audit-log-activity-for-your-enterprise
+  - /admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/streaming-the-audit-log-for-your-enterprise
+  - /admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/using-the-audit-log-api-for-your-enterprise
+  - /admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/audit-log-events-for-your-enterprise
+  - /admin/monitoring-activity-in-your-enterprise/exploring-user-activity/activity-dashboard
+  - /admin/monitoring-activity-in-your-enterprise/exploring-user-activity/viewing-push-logs
+  - /admin/monitoring-activity-in-your-enterprise/exploring-user-activity/log-forwarding
+  - /admin/monitoring-activity-in-your-enterprise/exploring-user-activity/managing-global-webhooks
   - /admin/user-management/managing-organizations-in-your-enterprise/adding-organizations-to-your-enterprise
-  - /admin/user-management/managing-organizations-in-your-enterprise/managing-unowned-organizations-in-your-enterprise
-  - /admin/user-management/managing-organizations-in-your-enterprise/streaming-the-audit-logs-for-organizations-in-your-enterprise-account
-  - /admin/user-management/managing-organizations-in-your-enterprise/viewing-the-audit-logs-for-organizations-in-your-enterprise
   - /admin/user-management/managing-projects-using-jira
   - /admin/user-management/managing-users-in-your-enterprise/inviting-people-to-manage-your-enterprise
   - /admin/user-management/managing-users-in-your-enterprise/managing-support-entitlements-for-your-enterprise
@@ -128,7 +137,6 @@ includeGuides:
   - /admin/user-management/managing-users-in-your-enterprise/viewing-people-in-your-enterprise
   - /admin/user-management/migrating-data-to-your-enterprise
   - /admin/user-management/migrating-to-internal-repositories
-  - /admin/user-management/monitoring-activity-in-your-enterprise/managing-global-webhooks
   - /admin/user-management/placing-a-legal-hold-on-a-user-or-organization
   - /admin/user-management/preparing-to-migrate-data-to-your-enterprise
   - /admin/user-management/preventing-users-from-creating-organizations

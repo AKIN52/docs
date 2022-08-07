@@ -19,7 +19,7 @@ topics:
 
 Este guia explica como usar {% data variables.product.prodname_actions %} para criar e implantar um projeto .NET no [Azure App Service](https://azure.microsoft.com/services/app-service/).
 
-{% ifversion fpt or ghec or ghae-issue-4856 %}
+{% ifversion fpt or ghec or ghae-issue-4856 or ghes > 3.4 %}
 
 {% note %}
 
@@ -65,6 +65,8 @@ Certifique-se de definir `AZURE_WEBAPP_NAME` na chave de fluxo de trabalho `env`
 
 ```yaml{:copy}
 {% data reusables.actions.actions-not-certified-by-github-comment %}
+
+{% data reusables.actions.actions-use-sha-pinning-comment %}
 
 name: Build and deploy ASP.Net Core app to an Azure Web App
 

@@ -26,10 +26,10 @@ topics:
 
 您可以通过选择仓库的可见性来限制谁可以访问仓库。 更多信息请参阅“[关于仓库可见性](#about-repository-visibility)”。
 
-对于用户拥有的仓库，您可以向其他人授予协作者访问权限，以便他们可以协作处理您的项目。 如果仓库归组织所有，您可以向组织成员授予访问权限，以便协作处理您的仓库。 更多信息请参阅“[用户帐户仓库的权限级别](/articles/permission-levels-for-a-user-account-repository/)”和“[组织的仓库角色](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)”。
+对于用户拥有的仓库，您可以向其他人授予协作者访问权限，以便他们可以协作处理您的项目。 如果仓库归组织所有，您可以向组织成员授予访问权限，以便协作处理您的仓库。 更多信息请参阅“[个人帐户仓库的权限级别](/articles/permission-levels-for-a-user-account-repository/)”和“[组织的仓库角色](/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)”。
 
 {% ifversion fpt or ghec %}
-通过用户帐户和组织的 {% data variables.product.prodname_free_team %}，可与无限的协作者合作处理设置了完全功能的无限公共仓库，或者是设置了有限功能的无限私有仓库， 要获取对私有仓库的高级处理，您可以升级到 {% data variables.product.prodname_pro %}、{% data variables.product.prodname_team %} 或 {% data variables.product.prodname_ghe_cloud %}。 {% data reusables.gated-features.more-info %}
+通过个人帐户和组织的 {% data variables.product.prodname_free_team %}，可与无限的协作者合作处理设置了完全功能的无限公共仓库，或者是设置了有限功能的无限私有仓库， 要获取对私有仓库的高级处理，您可以升级到 {% data variables.product.prodname_pro %}、{% data variables.product.prodname_team %} 或 {% data variables.product.prodname_ghe_cloud %}。 {% data reusables.gated-features.more-info %}
 {% else %}
 每个人和组织都可拥有无限的仓库，并且可以邀请无限的协作者参与所有仓库。
 {% endif %}
@@ -52,7 +52,7 @@ topics:
 
 {% elsif ghae %}
 
-当您创建由您的用户帐户拥有的仓库时，仓库始终是私有的。 创建组织拥有的存储库时，可以选择将存储库设为私有或内部存储库。
+当您创建由您的个人帐户拥有的仓库时，仓库始终是私有的。 创建组织拥有的存储库时，可以选择将存储库设为私有或内部存储库。
 
 {% endif %}
 
@@ -90,7 +90,15 @@ topics:
 
 {% data reusables.repositories.internal-repo-default %}
 
-企业的任何成员都可以复刻企业中组织拥有的任何内部存储库。 复刻的存储库将属于成员的用户帐户，复刻的可见性将是私有的。 如果用户从企业拥有的所有组织中删除，该用户的内部仓库复刻也会自动删除。
+{% ifversion ghec %}Unless your enterprise uses {% data variables.product.prodname_emus %}, members{% else %}Members{% endif %} of the enterprise can fork any internal repository owned by an organization in the enterprise. 复刻的存储库将属于成员的个人帐户，复刻的可见性将是私有的。 如果用户从企业拥有的所有组织中删除，该用户的内部仓库复刻也会自动删除。
+
+{% ifversion ghec %}
+{% note %}
+
+**Note:** {% data variables.product.prodname_managed_users_caps %} cannot fork internal repositories. For more information, see "[About {% data variables.product.prodname_emus %}](/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users#abilities-and-restrictions-of-managed-user-accounts)."
+
+{% endnote %}
+{% endif %}
 {% endif %}
 
 ## 限制查看仓库中的内容和差异
@@ -101,9 +109,9 @@ topics:
 
 ### 文本限制
 
-超过 **512 KB** 的文本文件始终显示为纯文本。 代码不强调语法，散文文件不会转换成 HTML（如 Markdown、AsciiDoc *等*）。
+超过 **512 KB** 的文本文件始终显示为纯文本。 Code is not syntax highlighted, and prose files are not converted to HTML (such as Markdown, AsciiDoc, *etc.*).
 
-超过 **5 MB** 的文本文件仅通过其源 URL 访问，将通过 `{% data variables.product.raw_github_com %}` 提供；例如 `https://{% data variables.product.raw_github_com %}/octocat/Spoon-Knife/master/index.html`。 单击 **Raw（源）**按钮获取文件的源 URL。
+Text files over **5 MB** are only available through their raw URLs, which are served through `{% data variables.product.raw_github_com %}`; for example, `https://{% data variables.product.raw_github_com %}/octocat/Spoon-Knife/master/index.html`. Click the **Raw** button to get the raw URL for a file.
 
 ### 差异限制
 
@@ -118,7 +126,7 @@ topics:
 
 ### 提交列表限制
 
-比较视图和拉取请求页面显示 `base` 与 `head` 修订之间的提交列表。 这些列表限于 **250** 次提交。 如果超过该限制，将会出现一条表示附加评论的注释（但不显示）。
+比较视图和拉取请求页面显示 `base` 与 `head` 修订之间的提交列表。 These lists are limited to **250** commits. 如果超过该限制，将会出现一条表示附加评论的注释（但不显示）。
 
 ## 延伸阅读
 

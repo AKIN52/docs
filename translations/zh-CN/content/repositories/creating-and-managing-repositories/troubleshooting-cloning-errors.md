@@ -117,7 +117,7 @@ $ git remote -v
 
 在极少数情况下，您可能没有仓库的适当 SSH 访问权限。
 
-您应确保正在使用的 SSH 密钥已连接到您的 {% data variables.product.product_name %} 用户帐户。 您可以通过在命令行中输入以下内容检查此项：
+您应确保正在使用的 SSH 密钥已附加到 {% data variables.product.product_name %} 的个人帐户。 您可以通过在命令行中输入以下内容检查此项：
 
 ```shell
 $ ssh -T git@{% data variables.command_line.codeblock %}
@@ -125,7 +125,9 @@ $ ssh -T git@{% data variables.command_line.codeblock %}
 > provide shell access.
 ```
 
-如果仓库属于组织，并且您使用的是 OAuth App 生成的 SSH 密钥，则 OAuth App 访问权限可能已被组织所有者限制。 更多信息请参阅“<a href="/organizations/restricting-access-to-your-organizations-data/about-oauth-app-access-restrictions" class="dotcom-only">关于 OAuth App 访问限制</a>”。
+{% ifversion fpt or ghec %}
+如果仓库属于组织，并且您使用的是 OAuth App 生成的 SSH 密钥，则 OAuth App 访问权限可能已被组织所有者限制。 更多信息请参阅“[关于 OAuth App 访问限制](/organizations/restricting-access-to-your-organizations-data/about-oauth-app-access-restrictions)”。
+{% endif %}
 
 更多信息请参阅[添加 SSH 密钥到 GitHub 帐户](/articles/adding-a-new-ssh-key-to-your-github-account)。
 

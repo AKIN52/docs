@@ -10,19 +10,18 @@ redirect_from:
   - /codespaces/developing-in-codespaces/changing-the-machine-type-for-your-codespace
 topics:
   - Codespaces
+type: how_to
 ---
 
 ## Sobre os tipos de máquina
 
 {% note %}
 
-**Observação:** Você só pode selecionar ou alterar o tipo de máquina se você for integrante de uma organização usando {% data variables.product.prodname_codespaces %} e estiver criando um codespace em um repositório pertencente a essa organização.
+**Observação:** Você só pode selecionar ou alterar o tipo de máquina se você for integrante de uma organização usando {% data variables.product.prodname_github_codespaces %} e estiver criando um codespace em um repositório pertencente a essa organização.
 
 {% endnote %}
 
-{% data reusables.codespaces.codespaces-machine-types %}
-
-Você pode escolher um tipo de máquina ao criar um codespace ou você pode mudar o tipo de máquina a qualquer momento depois de criar um codespace.
+{% data reusables.codespaces.codespaces-machine-types %} Você pode escolher um tipo alternativo ao criar um codespace ou a qualquer momento após criar um codespace.
 
 Para obter informações sobre como escolher um tipo de máquina ao criar um codespace, consulte "[Criando um codespace](/codespaces/developing-in-codespaces/creating-a-codespace#creating-a-codespace)". Para informações sobre como mudar o tipo de máquina em {% data variables.product.prodname_vscode %}, consulte "[Usando {% data variables.product.prodname_codespaces %} em {% data variables.product.prodname_vscode %}](/codespaces/developing-in-codespaces/using-codespaces-in-visual-studio-code#changing-the-machine-type-in-visual-studio-code)."
 
@@ -43,7 +42,11 @@ Para obter informações sobre como escolher um tipo de máquina ao criar um cod
 
    ![Caixa de diálogo que mostra tipos de máquinas disponíveis para escolher](/assets/images/help/codespaces/change-machine-type-choice.png)
 
-   {% data reusables.codespaces.codespaces-machine-type-availability %}
+   {% note %}
+
+   **Observação**: {% data reusables.codespaces.codespaces-machine-type-availability %}
+
+   {% endnote %}
 
 2. Clique **Atualizar o codespace**.
 

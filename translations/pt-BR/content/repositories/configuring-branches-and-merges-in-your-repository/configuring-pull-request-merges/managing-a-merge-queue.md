@@ -1,6 +1,6 @@
 ---
-title: Managing a merge queue
-intro: You can increase development velocity with a merge queue for pull requests in your repository.
+title: Gerenciando uma fila de merge
+intro: É possível aumentar a velocidade do desenvolvimento com uma fila de merge para pull requests no repositório.
 versions:
   fpt: '*'
   ghec: '*'
@@ -8,31 +8,19 @@ permissions: People with admin permissions can manage merge queues for pull requ
 topics:
   - Repositories
   - Pull requests
-shortTitle: Managing merge queue
+shortTitle: Gerenciando fila de merge
 redirect_from:
   - /repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/using-a-merge-queue
 ---
 
 {% data reusables.pull_requests.merge-queue-beta %}
 
-## About merge queues
+## Sobre filas de merge
 
 {% data reusables.pull_requests.merge-queue-overview %}
 
-The merge queue creates temporary branches with a special prefix to validate pull request changes. The changes in the pull request are then grouped with the latest version of the `base_branch` as well as changes ahead of it in the queue. {% data variables.product.product_name %} will merge all these changes into `base_branch` once the checks required by the branch protections of `base_branch` pass.
+A fila de merge cria branches temporários com um prefixo especial para validar as alterações do pull request. The changes in the pull request are then grouped into a `merge_group` with the latest version of the `base_branch` as well as changes ahead of it in the queue. {% data variables.product.product_name %} fará merge de todas essas alterações em `base_branch` uma vez que as verificações exigidas pelas proteções do branch de `base_branch` sejam aprovadas.
 
-You may need to update your Continuous Integration (CI) configuration to trigger builds on branch names that begin with the special prefix `gh-readonly-queue/{base_branch}` after the group is created.
-
-For example, with {% data variables.product.prodname_actions %}, a workflow with the following trigger will run each time a pull request that targets the base branch `main` is queued to merge.
-
-```yaml
-on:
-  push:
-    branches:
-    - gh-readonly-queue/main/**
-```
-
-{% data reusables.pull_requests.merge-queue-merging-method %}
 
 Para obter informações sobre métodos de merge, consulte "[Sobre merges de pull requests](/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges)".
 
@@ -40,19 +28,37 @@ Para obter informações sobre métodos de merge, consulte "[Sobre merges de pul
 
 **Observação:**
 
-* A merge queue cannot be enabled with branch protection rules that use wildcard characters (`*`) in the branch name pattern.
+* Uma fila de merge não pode ser habilitada com regras de proteção do branch que usam caracteres coringa (`*`) no padrão do nome do branch.
 
 {% endnote %}
 
 {% data reusables.pull_requests.merge-queue-reject %}
 
-## Managing a merge queue
+### Triggering merge group checks with {% data variables.product.prodname_actions %}
 
-Repository administrators can require a merge by enabling the branch protection setting "Require merge queue" in the protection rules for the base branch.
+You can use the `merge_group` event to trigger your {% data variables.product.prodname_actions %} workflow when a pull request is added to a merge queue. Note that this is a different event from the `pull_request` and `push` events.
+
+A workflow that reports a check which is required by the target branch's protections would look like this:
+
+```yaml
+on:
+  pull_request:
+  merge_group:
+```
+
+For more information see "[Events that trigger workflows](/actions/using-workflows/events-that-trigger-workflows#merge-group)"
+
+### Triggering merge group checks with other CI providers
+
+With other CI providers, you may need to update your CI configuration to run when a branch that begins with the special prefix `gh-readonly-queue/{base_branch}` is created.
+
+## Gerenciando uma fila de merge
+
+Os administradores de repositório podem exigir um merge que permite a proteção do branch que configura "Exigir file de merge" nas regras de proteção para o branch base.
 
 Para obter informações sobre como habilitar a configuração de proteção de fila de merge, consulte "[Gerenciando uma regra de proteção de branch](/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule#creating-a-branch-protection-rule). "
 
 ## Leia mais
 
-* "[Merging a pull request with a merge queue](/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request-with-a-merge-queue)"
+* "[Fazendo o merge de um pull request com uma fila de merge](/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request-with-a-merge-queue)"
 * "[Sobre branches protegidos](/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)"

@@ -44,7 +44,7 @@ topics:
 - 更改了帖子的状态，例如通过关闭议题或合并拉取请求。
 - 您所属的团队被 @提及。
 
-默认情况下，还会自动关注您创建的以及您的用户帐户所拥有的所有仓库。
+默认情况下，还会自动关注您创建的以及您的个人帐户所拥有的所有仓库。
 
 要取消订阅自动订阅的对话，您可以更改通知设置，或者直接取消订阅或取消关注 {% data variables.product.product_location %} 上的活动。 更多信息请参阅“[管理订阅](/github/managing-subscriptions-and-notifications-on-github/managing-your-subscriptions)”。
 
@@ -96,4 +96,4 @@ topics:
 
 ## 反馈和支持
 
-如果您有针对通知的反馈或功能请求，请使用 [{% data variables.product.product_name %} 反馈讨论](https://github.com/github/feedback/discussions/categories/general-feedback)。
+If you have feedback or feature requests for notifications, use a [{% data variables.product.prodname_github_community %} discussion](https://github.com/orgs/community/discussions/categories/general).

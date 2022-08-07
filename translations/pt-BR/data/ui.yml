@@ -24,16 +24,19 @@ release_notes:
   banner_text: GitHub began rolling these changes out to enterprises on
 search:
   need_help: Precisa de ajuda?
-  placeholder: Pesquisar tópicos, produtos...
+  placeholder: Search GitHub Docs
   loading: Carregando
   no_results: Nenhum resultado encontrado
   search_results_for: Search results for
   no_content: No content
   matches_displayed: Matches displayed
   search_error: An error occurred trying to perform the search.
+  description: Enter a search term to find it in the GitHub Documentation.
+  label: Search GitHub Docs
 homepage:
   explore_by_product: Explorar por produto
   version_picker: Versão
+  description: Help for wherever you are on your GitHub journey.
 toc:
   getting_started: Introdução
   popular: Popular
@@ -93,6 +96,12 @@ products:
       possible_types: Tipos possíveis
       preview_notice: Aviso de pré-visualização
       deprecation_notice: Aviso de descontinuação
+      preview_period: During the preview period, the API may change without notice.
+    overview:
+      preview_header: 'To toggle this preview and access the following schema members, you must provide a custom media type in the `Accept` header:'
+      preview_schema_members: 'Integrantes do esquema pré-visualizados'
+      announced: Announced
+      updates: Atualizações
   rest:
     reference:
       default: Padrão
@@ -103,8 +112,9 @@ products:
       notes: Observações
       parameters: Parâmetros
       response: Resposta
-      status_codes: Status codes
-      http_status_code: HTTP Status Code
+      example_response: Example response
+      status_code: Status code
+      http_status_code: HTTP response status codes
       code_sample: Amostra de código
       code_samples: Amostras de código
       preview_notice: Aviso de pré-visualização
@@ -113,7 +123,14 @@ products:
       see_preview_notices: Ver avisos de pré-visualização
       preview_header_is_required: Este cabeçalho é <strong>obrigatório</strong>
       preview_notice_to_change: This API is under preview and subject to change
-      works_with_github_apps: Works with GitHub Apps
+      works_with: Works with
+      api_reference: REST API reference
+      enum_description_title: Pode ser uma das ações a seguir
+      required: Obrigatório
+      headers: Headers
+      query: Parâmetros de consulta
+      path: Path parameters
+      body: Body parameters
 footer:
   all_rights_reserved: Todos os direitos reservados
   terms: Termos
@@ -168,7 +185,7 @@ product_landing:
   try_another: Try another filter or add your code example.
   no_result: Sorry, there are no guides that match your filter.
   learn: Learn how to add a code example
-  communities_using_discussions: Comunidades que usam discussões
+  communities_using_discussions: Communities on GitHub.com using discussions
   add_your_community: Add your community
   sponsor_community: GitHub Sponsors community
   supported_releases: Supported releases

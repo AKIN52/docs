@@ -20,7 +20,7 @@ topics:
 
 Esta guía te explica cómo utilizar las {% data variables.product.prodname_actions %} para crear y desplegar un proyecto a [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/).
 
-{% ifversion fpt or ghec or ghae-issue-4856 %}
+{% ifversion fpt or ghec or ghae-issue-4856 or ghes > 3.4 %}
 
 {% note %}
 
@@ -54,6 +54,8 @@ Este flujo de trabajo utiliza el motor de procesamiento `helm` para la [acción 
 
 ```yaml{:copy}
 {% data reusables.actions.actions-not-certified-by-github-comment %}
+
+{% data reusables.actions.actions-use-sha-pinning-comment %}
 
 name: Build and deploy to Azure Kubernetes Service
 

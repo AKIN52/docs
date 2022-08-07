@@ -42,7 +42,11 @@ shortTitle: 管理 Dependabot PR
 
 ## 更改 {% data variables.product.prodname_dependabot %} 拉取请求的变基策略
 
-默认情况下，{% data variables.product.prodname_dependabot %} 会自动为拉取请求变基，以解决各种冲突。 如果您喜欢手动处理合并冲突，可以使用 `rebase-strategy` 选项禁用此功能。 For details, see "[Configuration options for the dependabot.yml file](/github/administering-a-repository/configuration-options-for-dependency-updates#rebase-strategy)."
+默认情况下，{% data variables.product.prodname_dependabot %} 会自动为拉取请求变基，以解决各种冲突。 如果您喜欢手动处理合并冲突，可以使用 `rebase-strategy` 选项禁用此功能。 有关详细信息，请参阅“[dependabot.yml 文件的配置选项](/github/administering-a-repository/configuration-options-for-dependency-updates#rebase-strategy)”。
+
+## 允许 {% data variables.product.prodname_dependabot %} 变基并强制推送额外的提交
+
+默认情况下，{% data variables.product.prodname_dependabot %} 将在推送额外的提交后停止变基拉取请求。 要允许 {% data variables.product.prodname_dependabot %} 强制推送添加到其分支的提交，请包含以下任何字符串： `[dependabot skip]`、`[skip dependabot]`、`[dependabot-skip]` 或 `[skip-dependabot]`（小写或大写）到提交消息。
 
 ## 管理带注释命令的 {% data variables.product.prodname_dependabot %} 拉取请求
 
@@ -63,4 +67,4 @@ shortTitle: 管理 Dependabot PR
 
 {% data variables.product.prodname_dependabot %} 将用“竖起大拇指”表情符号来确认命令，并可能对拉取请求发表评论。 {% data variables.product.prodname_dependabot %} 通常快速响应，但如果 {% data variables.product.prodname_dependabot %} 正在忙于处理其他更新或命令，一些命令可能需要几分钟才能完成。
 
-如果您通过运行任何命令来忽略依赖项或版本，{% data variables.product.prodname_dependabot %} 将集中存储仓库的首选项。 虽然这是一种快速解决方案，但对于拥有多个参与者的仓库而言，最好是显式定义要在配置文件中忽略的依赖项和版本。 这样可以让所有参与者都能轻松了解某个特定依赖项为什么无法自动更新。 For more information, see "[Configuration options for the dependabot.yml file](/github/administering-a-repository/configuration-options-for-dependency-updates#ignore)."
+如果您通过运行任何命令来忽略依赖项或版本，{% data variables.product.prodname_dependabot %} 将集中存储仓库的首选项。 虽然这是一种快速解决方案，但对于拥有多个参与者的仓库而言，最好是显式定义要在配置文件中忽略的依赖项和版本。 这样可以让所有参与者都能轻松了解某个特定依赖项为什么无法自动更新。 有关详细信息，请参阅“[dependabot.yml 文件的配置选项](/github/administering-a-repository/configuration-options-for-dependency-updates#ignore)。”

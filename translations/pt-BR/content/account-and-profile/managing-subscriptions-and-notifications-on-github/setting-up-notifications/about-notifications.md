@@ -44,7 +44,7 @@ Em geral, você é automaticamente inscrito em conversas por padrão quando voc�
 - Alteração do estado de uma thread, como por exemplo, fechando um problema ou mesclando uma pull request.
 - Uma @menção a uma equipe da qual você é integrante
 
-Por padrão, você também inspeciona automaticamente todos os repositórios que você cria e são pertencentes à sua conta de usuário.
+Por padrão, você também observa automaticamente todos os repositórios que você cria e que são pertencentes à sua conta pessoal.
 
 Para cancelar a inscrição de conversas que você se inscreveu automaticamente, você pode alterar suas configurações de notificação ou cancelar diretamente a inscrição ou desmarcar a atividade em {% data variables.product.product_location %}. Para obter mais informações, consulte "[Gerenciando suas assinaturas](/github/managing-subscriptions-and-notifications-on-github/managing-your-subscriptions)."
 
@@ -96,4 +96,4 @@ Notificações que não estão marcadas como **Salvas** são mantidas por 5 mese
 
 ## Feedback e suporte
 
-Se você tiver comentários ou pedidos de recursos para notificações, use uma discussão de feedback de [{% data variables.product.product_name %}](https://github.com/github/feedback/discussions/categories/general-feedback).
+If you have feedback or feature requests for notifications, use a [{% data variables.product.prodname_github_community %} discussion](https://github.com/orgs/community/discussions/categories/general).

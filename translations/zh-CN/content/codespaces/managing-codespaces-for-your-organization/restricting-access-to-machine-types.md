@@ -1,9 +1,9 @@
 ---
 title: 限制对计算机类型的访问
-shortTitle: 计算机类型访问
+shortTitle: 限制机器类型
 intro: 您可以对用户在组织中创建代码空间时可以选择的计算机类型设置约束。
 product: '{% data reusables.gated-features.codespaces %}'
-permissions: 'To manage access to machine types for the repositories in an organization, you must be an organization owner.'
+permissions: 'To manage access to machine types for the repositories in an organization, you must be an owner of the organization.'
 versions:
   fpt: '*'
   ghec: '*'
@@ -14,13 +14,13 @@ topics:
 
 ## 概览
 
-通常，在创建代码空间时，系统会为将运行代码空间的计算机提供一系列规范。 您可以选择最适合您需求的计算机类型。 更多信息请参阅“[创建代码空间](/codespaces/developing-in-codespaces/creating-a-codespace#creating-a-codespace)”。 如果您为使用 {% data variables.product.prodname_github_codespaces %} 付费，那么您选择的计算机类型将影响您的账单金额。 有关计价的更多信息，请参阅“[关于代码空间的计费](/billing/managing-billing-for-github-codespaces/about-billing-for-codespaces)”。
+通常，在创建代码空间时，系统会为将运行代码空间的计算机提供一系列规范。 您可以选择最适合您需求的计算机类型。 更多信息请参阅“[创建代码空间](/codespaces/developing-in-codespaces/creating-a-codespace#creating-a-codespace)”。 如果您为使用 {% data variables.product.prodname_github_codespaces %} 付费，那么您选择的计算机类型将影响您的账单金额。 有关定价的更多信息，请参阅“[关于 {% data variables.product.prodname_github_codespaces %} 的计费](/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces)”。
 
 作为组织所有者，您可能希望对可用的计算机类型配置约束。 例如，如果组织中的工作不需要大量的计算能力或存储空间，则可以从用户可以选择的选项列表中删除资源丰富的计算机。 为此，您可以在组织的 {% data variables.product.prodname_codespaces %} 设置中定义一个或多个策略。
 
 ### 设置计算机类型约束时的行为
 
-如果存在不再符合已定义的策略的现有代码空间，则这些代码空间将继续运行，直到超时。 当用户尝试恢复代码空间时，将显示一条消息，告知他们此组织不再允许当前选择的计算机类型，并提示他们选择备用计算机类型。
+如果存在不再符合您定义的策略的现有代码空间，则这些代码空间将继续运行，直到它们停止或超时。 当用户尝试恢复代码空间时，将显示一条消息，告知他们此组织不再允许当前选择的计算机类型，并提示他们选择备用计算机类型。
 
 如果删除组织中单个存储库的 {% data variables.product.prodname_codespaces %} 配置所需的更高规范的计算机类型，则无法为该存储库创建代码空间。 当有人尝试创建代码空间时，他们将看到一条消息，告诉他们没有有效的计算机类型可以满足存储库 {% data variables.product.prodname_codespaces %} 配置的要求。
 
@@ -47,32 +47,21 @@ topics:
 
 {% data reusables.profile.access_org %}
 {% data reusables.profile.org_settings %}
-1. 在边栏的“Code, planning, and automation（代码、规划和自动化）”部分中，选择 **{% octicon "codespaces" aria-label="The codespaces icon" %}{% data variables.product.prodname_codespaces %}**，然后单击 **Policy（策略）**。
-2. 在“Codespace policies（代码空间策略）”页面上，单击 **Create Policy（创建策略）**。
-3. 输入新策略的名称。
-4. 单击 **Add constraint（添加约束）** ，然后选择 **Machine types（计算机类型）**。
+{% data reusables.codespaces.codespaces-org-policies %}
+1. 单击 **Add constraint（添加约束）** ，然后选择 **Machine types（计算机类型）**。
 
    ![为计算机类型添加约束](/assets/images/help/codespaces/add-constraint-dropdown.png)
 
-5. 单击 {% octicon "pencil" aria-label="The edit icon" %} 以编辑约束，然后清除您不希望可用的任何计算机类型的选择。
+1. 单击 {% octicon "pencil" aria-label="The edit icon" %} 以编辑约束，然后清除您不希望可用的任何计算机类型的选择。
 
    ![编辑计算机类型约束](/assets/images/help/codespaces/edit-machine-constraint.png)
 
-6. 在“Change policy target（更改策略目标）”区域中，单击下拉按钮。
-7. 选择 **All repositories（所有存储库）** 或 **Selected repositories（选定的存储库）**，以确定此策略将应用于哪些存储库。
-8. 如果选择了 **Selected repositories（所选仓库）**：
-   1. 单击 {% octicon "gear" aria-label="The settings icon" %}。
-
-      ![编辑策略的设置](/assets/images/help/codespaces/policy-edit.png)
-
-   2. 选择要应用此策略的存储库。
-   3. 在存储库列表的底部，单击 **Select repositories（选择存储库）**。
-
-      ![为此策略选择存储库](/assets/images/help/codespaces/policy-select-repos.png)
-
-9. 单击 **Save（保存）**。
-
+{% data reusables.codespaces.codespaces-policy-targets %}
+1. 如果要向策略添加其他约束，请单击 **Add constraint（添加约束）** ，然后选择另一个约束。 有关其他约束的信息，请参阅“[限制转发端口的可见性](/codespaces/managing-codespaces-for-your-organization/restricting-the-visibility-of-forwarded-ports)”、“[限制空闲超时期限](/codespaces/managing-codespaces-for-your-organization/restricting-the-idle-timeout-period)”和“[限制代码空间的保留期](/codespaces/managing-codespaces-for-your-organization/restricting-the-retention-period-for-codespaces)”。
+1. 向策略添加完约束后，单击 **Save（保存）**。
 ## 编辑策略
+
+您可以编辑现有策略。 例如，您可能希望在策略中添加或删除约束。
 
 1. 显示“Codespace policies（代码空间策略）”页。 更多信息请参阅“[添加策略以限制可用计算机类型](#adding-a-policy-to-limit-the-available-machine-types)”。
 1. 单击要编辑的策略的名称。
@@ -87,4 +76,4 @@ topics:
 
 ## 延伸阅读
 
-- "[管理代码空间的支出限制](/billing/managing-billing-for-github-codespaces/managing-spending-limits-for-codespaces)"
+- “[管理 {% data variables.product.prodname_github_codespaces %} 的支出限额](/billing/managing-billing-for-github-codespaces/managing-spending-limits-for-github-codespaces)”

@@ -20,7 +20,7 @@ topics:
 
 Esta guía te explica cómo utilizar las {% data variables.product.prodname_actions %} para compilar y desplegar una app web a [Azure Static Web Apps](https://azure.microsoft.com/services/app-service/static/).
 
-{% ifversion fpt or ghec or ghae-issue-4856 %}
+{% ifversion fpt or ghec or ghae-issue-4856 or ghes > 3.4 %}
 
 {% note %}
 
@@ -54,6 +54,8 @@ Para obtener más información sobre estos valores, consulta la sección "[Confi
 ```yaml{:copy}
 {% data reusables.actions.actions-not-certified-by-github-comment %}
 
+{% data reusables.actions.actions-use-sha-pinning-comment %}
+
 name: Deploy web app to Azure Static Web Apps
 
 env:
@@ -61,7 +63,7 @@ env:
   API_LOCATION: "api" # location of your api source code - optional
   APP_ARTIFACT_LOCATION: "build" # location of client code build output
 
-  on:
+on:
   push:
     branches:
       - main
@@ -72,6 +74,7 @@ env:
 
 permissions:
   issues: write
+  contents: read
 
 jobs:
   build_and_deploy:
